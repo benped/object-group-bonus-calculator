@@ -1,0 +1,11 @@
+body {
+    background-color: crimson;
+    color: goldenrod;
+    text-align: center;
+}
+
+.results{
+    display: table-column;
+    justify-content: left;
+    grid-column-start: 40%;
+}

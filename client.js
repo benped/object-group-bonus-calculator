@@ -1,3 +1,5 @@
+$(document).ready(readyNow) 
+
 const employees = [
   {
     name: 'Atticus',
@@ -68,6 +70,8 @@ function bonusCalcFunction(employee) {
 
 function totalComp(array){
   employeesBonus = [];
+  // Dane if you are reading this - are we supposed to use Var for the line above? 
+  
   for ( let employee of array ) {
   let bonusPercentage = bonusCalcFunction(employee);
   let bonusPercentageString = ((bonusPercentage)*100)+'%';
@@ -90,3 +94,16 @@ function totalComp(array){
 console.log('basic test', bonusCalcFunction(employees[0]));
 console.log(totalComp(employees));
 
+
+
+function readyNow() { //stuff that gets run when document is ready
+  //button input here
+  $( '#bonusCalc' ).on( 'click', displayStats );
+
+}//end readyNow
+
+function displayStats(){
+  for (let employee of employeesBonus) {
+    $('#employeeOutput').append(`<h3>${employee.name}:</h3><li>Bonus percentage: ${((employee.bonusPercentage)*100)}%</li><li>Total compensation: ${employee.totalComp} -Total bonus: ${employee.totalBonus}</li>`)
+  }
+}
