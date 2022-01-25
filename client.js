@@ -40,3 +40,21 @@ const employees = [
 // Ask questions when you don't.
 
 console.log( employees );
+
+function bonusCalcFunction(employee) {
+  let bonusPercentage=0;
+  if (employee.reviewRating===5) {
+    bonusPercentage += .1;
+  } else if (employee.reviewRating===4) {
+    bonusPercentage += .06;
+  } else if (employee.reviewRating===3) {
+    bonusPercentage += .04;
+  }//end review rating
+  if (employee.employeeNumber.length) {
+    console.log('This is true',employee.employeeNumber,employee.employeeNumber.length);
+    
+  }
+  return bonusPercentage
+}//end function
+
+console.log('basic test', bonusCalcFunction(employees[0]));
