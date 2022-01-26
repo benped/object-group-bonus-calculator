@@ -7,7 +7,7 @@ body {
 .results{
     display: table-column;
     justify-content: left;
-    grid-column-start: 40%;
+    grid-column-start: 10%;
 }
 
 ul {

@@ -57,26 +57,53 @@ function displayStats(){
   //This below defines the bonus percentage calculation function
   function bonusCalcFunction(employee) {
     let bonusPercentage=0;
-    if (employee.reviewRating===5) {
-        bonusPercentage += .1;
-    } else if (employee.reviewRating===4) {
-        bonusPercentage += .06;
-    } else if (employee.reviewRating===3) {
+
+    // if (employee.reviewRating===5) {
+    //     bonusPercentage += .1;
+    // } else if (employee.reviewRating===4) {
+    //     bonusPercentage += .06;
+    // } else if (employee.reviewRating===3) {
+    //     bonusPercentage += .04;
+    // }//end review rating
+
+
+    switch (employee.reviewRating){
+      case 3: 
         bonusPercentage += .04;
-    }//end review rating
-      if (employee.employeeNumber.length<=4) {
+        break;
+      case 4:
+        bonusPercentage += .06;
+        break;
+      case 5: 
+        bonusPercentage += .1;
+        break;
+      case 0:
+      case 1:
+      case 2:
+        bonusPercentage += 0;
+        break;
+      default:
+        console.log('Out of BOUNDS');
+    } // END SWITCH REVIEW RATING
+
+    if (employee.employeeNumber.length<=4) {
         bonusPercentage += .05;
     }//end seniority filter
-      if (Number(employee.annualSalary) > 65000 ) { 
-        bonusPercentage -= .01;
-      }//end high salary filter
-      if (bonusPercentage > .13){
-        bonusPercentage = .13;
-      }
-      if (bonusPercentage < 0) {
-        bonusPercentage = 0;
-      }//end high/low bonus filter
+
+    if (Number(employee.annualSalary) > 65000 ) { 
+      bonusPercentage -= .01;
+    }//end high salary filter
+    if (bonusPercentage > .13){
+      bonusPercentage = .13;
+    }
+    if (bonusPercentage < 0) {
+      bonusPercentage = 0;
+    }//end high/low bonus filter
+
+
+
     return bonusPercentage
+
   }//end function
   
   //This below defines the function that loops through the employees array
