@@ -44,14 +44,16 @@ const employees = [
 console.log( employees );
 
 
-
+let readyNowCheck = false;
 
 function readyNow() { //stuff that gets run when document is ready
   $( '#bonusCalc' ).on( 'click', displayStats );//This prepares the button to be clicked
 }//end readyNow
 
 function displayStats(){
-
+  if (readyNowCheck === true){
+    return
+  }
   //This below defines the bonus percentage calculation function
   function bonusCalcFunction(employee) {
     let bonusPercentage=0;
@@ -106,5 +108,5 @@ function displayStats(){
   for (let employee of employeesBonus) {
     $('#employeeOutput').append(`<h3>${employee.name}:</h3><li>Bonus percentage: ${((employee.bonusPercentage)*100)}%</li><li>Total compensation: ${employee.totalComp}</li><li>Total bonus: ${employee.totalBonus}</li>`)
   }
-
+  readyNowCheck = true;
 }//end displayStats
